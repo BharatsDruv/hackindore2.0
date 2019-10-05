@@ -19,7 +19,6 @@ model.compile(loss='categorical_crossentropy',
 img = image.load_img('test1.jpg', target_size=(img_width, img_height))
 x = image.img_to_array(img)
 x = np.expand_dims(x, axis=0)
-
 images = np.vstack([x])
-classes = model.predict_classes(images, batch_size=10)
-print classes
+classes = model.predict(images, batch_size=10)
+print (np.argmax(classes,axis=1))
